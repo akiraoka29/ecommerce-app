@@ -1,18 +1,17 @@
 <?php
 
-namespace App\View\Components\Product;
+namespace App\View\Components\nav;
 
 use Illuminate\View\Component;
 
-class Product extends Component
+class tab extends Component
 {
-    /**
-     * Category.
+     /**
+     * Tab
      *
      * @var string
      */
     public $categories;
-
     /**
      * Create a new component instance.
      *
@@ -30,6 +29,6 @@ class Product extends Component
      */
     public function render()
     {
-        return view('components.product.product');
+        return view('components.nav.tab');
     }
 }

@@ -8,8 +8,8 @@
                     <!-- Top Left -->
                     <div class="top-left">
                         <ul class="list-main">
-                            <li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-                            <li><i class="ti-email"></i> support@shophub.com</li>
+                            <li><i class="ti-headphone-alt"></i> +62 81233008771</li>
+                            <li><i class="ti-email"></i> support@yukbelanja.com</li>
                         </ul>
                     </div>
                     <!--/ End Top Left -->
@@ -18,10 +18,10 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <li><i class="ti-location-pin"></i> Store location</li>
-                            <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+                            {{-- <li><i class="ti-location-pin"></i> Store location</li> --}}
+                            {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
                             <li><i class="ti-user"></i> <a href="#">My account</a></li>
-                            <li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
+                            <li><i class="ti-power-off"></i><a href="javascript:void(0)" data-toggle="modal" data-target="#loginModal">Login</a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -76,9 +76,6 @@
                         <div class="sinlge-bar">
                             <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                         </div>
-                        <div class="sinlge-bar">
-                            <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                        </div>
                         <div class="sinlge-bar shopping">
                             <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
                             <!-- Shopping Item -->
@@ -123,7 +120,7 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="all-category">
-                            <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
+                            <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>KATEGORI</h3>
                             <ul class="main-category">
                                 <li><a href="#">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                     <ul class="sub-category">
@@ -197,21 +194,21 @@
                                     <div class="nav-inner">	
                                         <ul class="nav main-menu menu navbar-nav">
                                                 <li class="active"><a href="#">Home</a></li>
-                                                <li><a href="#">Product</a></li>												
-                                                <li><a href="#">Service</a></li>
-                                                <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
+                                                {{-- <li><a href="#">Product</a></li>								 --}}
+                                                {{-- <li><a href="#">Service</a></li> --}}
+                                                {{-- <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
                                                     <ul class="dropdown">
                                                         <li><a href="shop-grid.html">Shop Grid</a></li>
                                                         <li><a href="cart.html">Cart</a></li>
                                                         <li><a href="checkout.html">Checkout</a></li>
                                                     </ul>
-                                                </li>
-                                                <li><a href="#">Pages</a></li>									
+                                                </li> --}}
+                                                {{-- <li><a href="#">Pages</a></li>									
                                                 <li><a href="#">Blog<i class="ti-angle-down"></i></a>
                                                     <ul class="dropdown">
                                                         <li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
                                                     </ul>
-                                                </li>
+                                                </li> --}}
                                                 <li><a href="contact.html">Contact Us</a></li>
                                             </ul>
                                     </div>

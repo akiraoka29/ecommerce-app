@@ -1,26 +1,19 @@
 <?php
 
-namespace App\View\Components\Product;
+namespace App\View\Components\modal;
 
 use Illuminate\View\Component;
 
-class Product extends Component
+class signin extends Component
 {
-    /**
-     * Category.
-     *
-     * @var string
-     */
-    public $categories;
-
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($categories)
+    public function __construct()
     {
-        $this->categories = $categories;
+        //
     }
 
     /**
@@ -30,6 +23,6 @@ class Product extends Component
      */
     public function render()
     {
-        return view('components.product.product');
+        return view('components.modal.signin');
     }
 }
