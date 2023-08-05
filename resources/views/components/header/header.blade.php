@@ -1,3 +1,6 @@
+<?php
+    $limitCategory = 10;
+?>
 <!-- Header -->
 <header class="header shop">
     <!-- Topbar -->
@@ -20,8 +23,12 @@
                         <ul class="list-main">
                             {{-- <li><i class="ti-location-pin"></i> Store location</li> --}}
                             {{-- <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
+                            @if(!$user)
+                            <li><i class="ti-power-off"></i><a href="{{ route('signin.index') }}">{{ __('home.login') }}</a></li>
+                            @else 
                             <li><i class="ti-user"></i> <a href="#">{{ __('home.my_account') }}</a></li>
-                            <li><i class="ti-power-off"></i><a href="javascript:void(0)" data-toggle="modal" data-target="#loginModal">{{ __('home.login') }}</a></li>
+                            <li><i class="ti-power-off"></i><a href="{{ route('logout') }}">{{ __('home.logout') }}</a></li>
+                            @endif
                         </ul>
                     </div>
                     <!-- End Top Right -->
@@ -36,7 +43,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                        <a href="{{ route('home') }}"><img src="images/logo.png" alt="logo"></a>
                     </div>
                     <!--/ End Logo -->
                     <!-- Search Form -->
@@ -59,8 +66,10 @@
                         <div class="search-bar">
                             <select>
                                 <option selected="selected">{{ __('home.all_category') }}</option>
-                                @foreach($categories as $category)
+                                @foreach($categories as $key => $category)
+                                @if($key < $limitCategory)
                                 <option value="{{ strtolower($category->category_name) }}">{{ $category->category_name }}</option>
+                                @endif
                                 @endforeach
                             </select>
                             <form>
@@ -73,37 +82,45 @@
                 <div class="col-lg-2 col-md-3 col-12">
                     <div class="right-bar">
                         <!-- Search Form -->
-                        <div class="sinlge-bar">
+                        {{-- <div class="sinlge-bar">
                             <a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                        </div>
+                        </div> --}}
                         <div class="sinlge-bar shopping">
-                            <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+                            <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ count($cart) }}</span></a>
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
-                                    <span>2 Items</span>
-                                    <a href="#">View Cart</a>
+                                    <span>{{ count($cart) }} Items</span>
+                                    <a href="{{ route('cart.index') }}">View Cart</a>
                                 </div>
                                 <ul class="shopping-list">
+                                <?php
+                                    $grandTotal = 0;
+                                ?>
+                                    @foreach($cart as $item)
+                                    <?php
+                                        $thumbnail = ($item['thumbnail'] !== '') ? $item['thumbnail'] : 'https://via.placeholder.com/70x70';
+                                        // Calculate Item Price
+                                        $grandTotal += $item['price'] * $item['quantity'];
+                                    ?>
                                     <li>
-                                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                                        <h4><a href="#">Woman Ring</a></h4>
-                                        <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                                        <form method="post" action="{{ route('cart.remove', $item['product_id']) }}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="remove" title="Remove this item"><i class="fa fa-remove"></i></button>
+                                        </form>
+                                        <a class="cart-img" href="#"><img src="{{ $thumbnail }}" alt="#" with="70" height="70"></a>
+                                        <h4><a href="#">{{ $item['product_name'] }}</a></h4>
+                                        <p class="quantity">{{ $item['quantity'] }}x - <span class="amount">Rp {{ number_format($item['price']) }}</span></p>
                                     </li>
-                                    <li>
-                                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                                        <h4><a href="#">Woman Necklace</a></h4>
-                                        <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                    </li>
+                                    @endforeach
                                 </ul>
                                 <div class="bottom">
                                     <div class="total">
                                         <span>Total</span>
-                                        <span class="total-amount">$134.00</span>
+                                        <span class="total-amount">Rp {{ number_format($grandTotal) }}</span>
                                     </div>
-                                    <a href="checkout.html" class="btn animate">Checkout</a>
+                                    <a href="{{ route('checkout.index') }}" class="btn animate">Checkout</a>
                                 </div>
                             </div>
                             <!--/ End Shopping Item -->
@@ -118,16 +135,20 @@
         <div class="container">
             <div class="cat-nav-head">
                 <div class="row">
+                    @if(Route::currentRouteName() == 'home')
                     <div class="col-lg-3">
                         <div class="all-category">
                             <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>{{ __('home.category') }}</h3>
                             <ul class="main-category">
-                                @foreach($categories as $category)
+                                @foreach($categories as $key => $category)
+                                @if($key < $limitCategory)
                                 <li><a href="#">{{ $category->category_name }}</a></li>
+                                @endif
                                 @endforeach
                             </ul>
                         </div>
                     </div>
+                    @endif
                     <div class="col-lg-9 col-12">
                         <div class="menu-area">
                             <!-- Main Menu -->
@@ -135,7 +156,7 @@
                                 <div class="navbar-collapse">	
                                     <div class="nav-inner">	
                                         <ul class="nav main-menu menu navbar-nav">
-                                                <li class="active"><a href="#">{{ __('home.home') }}</a></li>
+                                                <li class="active"><a href="{{ route('home') }}">{{ __('home.home') }}</a></li>
                                                 {{-- <li><a href="#">Product</a></li>								 --}}
                                                 {{-- <li><a href="#">Service</a></li> --}}
                                                 {{-- <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
@@ -151,7 +172,7 @@
                                                         <li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
                                                     </ul>
                                                 </li> --}}
-                                                <li><a href="contact.html">{{ __('home.contact_us') }}</a></li>
+                                                {{-- <li><a href="contact.html">{{ __('home.contact_us') }}</a></li> --}}
                                             </ul>
                                     </div>
                                 </div>

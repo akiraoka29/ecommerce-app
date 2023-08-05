@@ -4,21 +4,25 @@
     <div class="single-slider">
         <div class="container">
             <div class="row no-gutters">
+                @foreach($banners as $banner)
                 <div class="col-lg-9 offset-lg-3 col-12">
                     <div class="text-inner">
                         <div class="row">
                             <div class="col-lg-7 col-12">
                                 <div class="hero-text">
-                                    <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
-                                    <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
+                                    <h1><span>{{ $banner->tag }} </span>{{ $banner->title }}</h1>
+                                    <p>{{ $banner->description }}.</p>
+                                    @if($banner->show_button === 1)
                                     <div class="button">
                                         <a href="#" class="btn">Shop Now!</a>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

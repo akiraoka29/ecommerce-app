@@ -8,5 +8,7 @@ return [
     'search_bar' => 'Cari Produk Terbaru',
     'hot_product' => 'Paling Dicari',
     'login' => 'Masuk',
+    'logout' => 'Keluar',
     'my_account' => 'Akun Saya',
+    'product_empty' => 'Produk tidak ditemukan.'
 ];

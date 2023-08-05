@@ -4,10 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>YukBelanja.com</title>
+    <title>yukbelanja.com</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -83,5 +84,7 @@
 	<script src="{{ asset('js/vendor/easing.js') }}"></script>
 	<!-- Active JS -->
 	<script src="{{ asset('js/vendor/active.js') }}"></script>
+
+	@yield('script')
 </body>
 </html>

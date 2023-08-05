@@ -7,13 +7,19 @@ use Illuminate\View\Component;
 class Hero extends Component
 {
     /**
+     * Banners.
+     *
+     * @var string
+     */
+    public $banners;
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($banners)
     {
-        //
+        $this->banners = $banners;
     }
 
     /**

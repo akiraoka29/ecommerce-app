@@ -7,13 +7,36 @@ use Illuminate\View\Component;
 class header extends Component
 {
     /**
+     * Categories
+     *
+     * @var string
+     */
+    public $categories;
+
+    /**
+     * Cart
+     *
+     * @var string
+     */
+    public $cart;
+
+    /**
+     * User
+     *
+     * @var object
+     */
+    public $user;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($categories,$cart,$user)
     {
-        //
+        $this->categories = $categories;
+        $this->cart = $cart;
+        $this->user = $user;
     }
 
     /**

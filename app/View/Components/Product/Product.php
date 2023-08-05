@@ -14,13 +14,21 @@ class Product extends Component
     public $categories;
 
     /**
+     * Product.
+     *
+     * @var string
+     */
+    public $products;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($categories)
+    public function __construct($categories, $products)
     {
         $this->categories = $categories;
+        $this->products = $products;
     }
 
     /**

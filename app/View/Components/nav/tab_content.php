@@ -7,13 +7,28 @@ use Illuminate\View\Component;
 class tab_content extends Component
 {
     /**
+     * Product.
+     *
+     * @var string
+     */
+    public $products;
+
+    /**
+     * Category.
+     *
+     * @var string
+     */
+    public $categories;
+
+    /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($products,$categories)
     {
-        //
+        $this->products = $products;
+        $this->categories = $categories;
     }
 
     /**

@@ -13,7 +13,7 @@
                     <!-- Tab Nav -->
                     <x-nav.tab :categories="$categories" />
                     <!-- Tab Content -->
-                    <x-nav.tab_content />
+                    <x-nav.tab_content :products="$products" :categories="$categories" />
                 </div>
             </div>
         </div>

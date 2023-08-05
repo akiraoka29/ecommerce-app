@@ -9,7 +9,7 @@ trait ProductTrait
 {
     public function getProduct()
     {
-        $product = Product::all();
+        $product = Product::with(['categories','images'])->get();
 
         return $product;
     }
